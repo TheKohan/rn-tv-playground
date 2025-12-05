@@ -1,38 +1,13 @@
 import {
-  Pressable,
   StyleSheet,
   Text,
   TouchableOpacity,
   TVFocusGuideView,
-  useTVEventHandler,
   View,
+  Image,
+  ScrollView,
 } from "react-native";
-import React, { memo, useMemo, useRef } from "react";
-
-export default function App() {
-  const [lastEventType, setLastEventType] = React.useState("");
-  const [prevClicked, setPrevClicked] = React.useState("");
-
-  const myTVEventHandler = (evt) => {
-    setLastEventType(evt.eventType);
-  };
-
-  useTVEventHandler(myTVEventHandler);
-
-  return (
-    <View style={styles.container}>
-      <TVFocusGuideView autoFocus>
-        <View style={{ flexDirection: "row", gap: 10 }}>
-          <Nav />
-          <View>
-            <Hero />
-            <Grid />
-          </View>
-        </View>
-      </TVFocusGuideView>
-    </View>
-  );
-}
+import React, { memo, useRef } from "react";
 
 const Hero = () => {
   return (
@@ -49,22 +24,26 @@ const Hero = () => {
 
 const GridItem = memo(
   ({ number, ref }: { number: number; ref?: React.RefObject<View> }) => {
-    const backgroundColor = useMemo(() => getRandomColor(), []);
-
     return (
       <TouchableOpacity
         style={{
-          backgroundColor,
-          padding: 10,
           alignItems: "center",
           justifyContent: "center",
           borderRadius: 10,
+          overflow: "hidden",
           margin: 10,
-          width: 100,
         }}
         ref={ref}
       >
-        <Text style={styles.text}>{number}</Text>
+        <Image
+          style={{
+            width: 200,
+            height: 100,
+          }}
+          source={{
+            uri: `https://picsum.photos/200/100?random="${number}"`,
+          }}
+        />
       </TouchableOpacity>
     );
   }
@@ -145,9 +124,21 @@ const Nav = () => {
   );
 };
 
-const getRandomColor = () => {
-  return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
-};
+export default function App() {
+  return (
+    <View style={styles.container}>
+      <TVFocusGuideView autoFocus>
+        <View style={{ flexDirection: "row", gap: 10 }}>
+          <Nav />
+          <ScrollView style={{ flex: 1 }}>
+            <Hero />
+            <Grid />
+          </ScrollView>
+        </View>
+      </TVFocusGuideView>
+    </View>
+  );
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -176,7 +167,6 @@ const styles = StyleSheet.create({
   },
   nav: {
     padding: 20,
-    backgroundColor: "blue",
     borderRadius: 10,
     height: "100%",
     gap: 10,

@@ -2327,6 +2327,11 @@ expo-font@~14.0.9:
   dependencies:
     fontfaceobserver "^2.1.0"
 
+expo-horizon-core@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/expo-horizon-core/-/expo-horizon-core-1.0.6.tgz#987b54fe929593adc179e4b6446b896bff819149"
+  integrity sha512-elAwKEDvcD0Nyq0Y+ofgAf7/hjeveHnSPJz33JnAyN9P6MAw6kObYaYWqr74cLY6AtzI+8jGVIPK/4m059PgvQ==
+
 expo-keep-awake@~15.0.7:
   version "15.0.7"
   resolved "https://registry.yarnpkg.com/expo-keep-awake/-/expo-keep-awake-15.0.7.tgz#4eada556e1cca6c9c2e5aa39478fd01816cd0bc9"

@@ -12,6 +12,7 @@
   "dependencies": {
     "@expo/metro-runtime": "~6.1.1",
     "expo": "^54.0.20",
+    "expo-horizon-core": "^1.0.6",
     "expo-splash-screen": "~31.0.10",
     "expo-status-bar": "~3.0.8",
     "react": "19.1.0",
